@@ -11,6 +11,7 @@ RUN \
   echo "mysqld_safe &" > /tmp/runme && \
   echo "mysqladmin --silent --wait=30 ping || exit 1" >> /tmp/runme && \
   echo "mysql -e 'GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"%\" WITH GRANT OPTION;'" >> /tmp/runme && \
+  echo "mysql -e 'CREATE DATABASE IF NOT EXISTS test;'" >> /tmp/runme && \
   bash /tmp/runme && \
   rm -f /tmp/runme
 
