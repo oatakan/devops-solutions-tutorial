@@ -1,0 +1,27 @@
+---
+- include: debian.yml
+  when: (ansible_os_family|lower == 'debian')
+
+- include: redhat.yml
+  when: (ansible_os_family|lower == 'redhat')
+
+# change mysql root password
+- mysql_user: name=root host="%" priv=*.*:ALL,GRANT password={{ mysql_root_password }}
+  register: change_mysql_root_password
+  ignore_errors: true
+
+# if mysql_user failed, it may be due to localhost socket is not properly being used
+- mysql_user: name=root host="%" priv=*.*:ALL,GRANT password={{ mysql_root_password }} login_host=127.0.0.1
+  ignore_errors: true
+  when: not change_mysql_root_password|success
+
+# remove all anonymous user accounts
+- mysql_user: name='' host_all=yes state=absent
+
+# add users
+- mysql_user: name={{ item.name }} password={{ item.password }} priv=*.*:ALL,GRANT state=present
+  with_items: "{{ users }}"
+
+
+
+

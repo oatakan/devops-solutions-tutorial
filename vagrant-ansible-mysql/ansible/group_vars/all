@@ -1,0 +1,12 @@
+---
+root_password: Passw0rd%%
+mysql_root_password: Passw0rd%%
+
+users:
+  - name: devuser1
+    public_key: /tmp/devuser1.pub
+    password: passw0rd
+  - name: devuser2
+    public_key: /tmp/devuser2.pub
+    password: passw0rd
+

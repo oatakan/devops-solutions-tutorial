@@ -1,0 +1,16 @@
+---
+- name: install mysql
+  yum: name={{ item }} update_cache=yes state=present
+  with_items:
+   - apache2
+  register: result
+  until: result|succeeded
+  retries: 5
+
+- name: install apache module packages
+  yum: name={{ item }} update_cache=yes state=present
+  with_items: "{{ apache.modules }}"
+  register: result
+  until: result|succeeded
+  retries: 5
+

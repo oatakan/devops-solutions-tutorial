@@ -1,0 +1,19 @@
+---
+- name: install mysql-community-release
+  shell: rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+
+- name: install mysql
+  yum: name={{item}} update_cache=yes state=present
+  with_items:
+   - mysql-server
+   - MySQL-python
+
+# Configure MySQL Remote Access
+- name: configure mysql remote access
+  lineinfile: dest=/etc/my.cnf insertafter="^\[mysqld\]" line="bind-address = 0.0.0.0"
+  notify:
+    - enable mysqld
+    - start mysqld
+
+- name: start mysqld
+  service: name=mysqld state=started

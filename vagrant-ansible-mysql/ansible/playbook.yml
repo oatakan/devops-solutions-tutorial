@@ -1,0 +1,24 @@
+# talk to all hosts just so we can learn about them
+- name: configure linux hosts
+  hosts: all
+  gather_facts: force
+  tags:
+    - common
+  roles:
+    - { role: common, become: true }
+
+- name: install mysql
+  hosts: all
+  become: true
+  tags:
+    - mysql
+  roles:
+    - mysql
+
+- name: install apache
+  hosts: all
+  become: true
+  tags:
+    - apache
+  roles:
+    - apache

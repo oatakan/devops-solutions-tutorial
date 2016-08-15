@@ -1,0 +1,21 @@
+version: '2'
+services:
+  app:
+    build: php-mysql-app
+    container_name: app
+    image: sumerli/php-mysql-app
+    volumes:
+      - ./php-mysql-app/code:/var/www/html/site
+  mysql:
+    build: mysql
+    container_name: mysql
+    image: sumerli/mysql
+  nginx:
+    build: nginx
+    container_name: nginx
+    image: sumerli/nginx
+    volumes:
+      - ./php-mysql-app/code:/var/www/html/site
+      - ./nginx/site.conf:/etc/nginx/conf.d/site.conf:ro
+    ports:
+      - 80:80
