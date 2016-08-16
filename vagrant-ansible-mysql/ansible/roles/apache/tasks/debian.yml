@@ -7,10 +7,16 @@
 
 - name: install apache module packages
   apt: pkg={{ item }}
-  with_items: "{{ apache.modules }}"
+  with_items: "{{ apache.modules.debian }}"
   register: result
   until: result|succeeded
   retries: 5
 
-
+- name: enable apache modules
+  apache2_module: name={{ item }}
+  with_items:
+    - headers
+    - ssl
+    - rewrite
+  notify: reload apache
 

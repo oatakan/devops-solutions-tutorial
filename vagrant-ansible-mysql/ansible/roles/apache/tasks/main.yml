@@ -8,13 +8,6 @@
 - name: add phpinfo test page
   copy: src=test.php dest=/var/www/html owner=root group=root mode=644
 
-- name: enable apache modules
-  apache2_module: name={{ item }}
-  with_items:
-    - headers
-    - ssl
-    - rewrite
-  notify: reload apache
 
 
 

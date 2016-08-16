@@ -1,7 +1,13 @@
 ---
 apache:
   modules:
-    - php5-mysql
-    - php5
-    - libapache2-mod-php5
-    - php5-mcrypt
+    debian:
+      - php5-mysql
+      - php5
+      - libapache2-mod-php5
+      - php5-mcrypt
+    redhat:
+      - php-mysql
+      - php
+      - php-mcrypt.x86_64
+      - mod_ssl

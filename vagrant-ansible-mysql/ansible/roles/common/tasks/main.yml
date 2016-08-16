@@ -11,5 +11,10 @@
   with_items: "{{ users }}"
   ignore_errors: true
 
-- include: ssh.yml
+- include: ssh-debian.yml
+  when: (ansible_os_family|lower == 'debian')
+
+- include: ssh-redhat.yml
+  when: (ansible_os_family|lower == 'redhat')
+
 

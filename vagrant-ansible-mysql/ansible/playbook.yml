@@ -1,4 +1,8 @@
 # talk to all hosts just so we can learn about them
+- hosts: all
+  tasks:
+     - group_by: key=os_{{ ansible_distribution }}
+
 - name: configure linux hosts
   hosts: all
   gather_facts: force

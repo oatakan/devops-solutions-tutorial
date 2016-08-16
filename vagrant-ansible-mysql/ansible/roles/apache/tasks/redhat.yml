@@ -1,16 +1,25 @@
 ---
-- name: install mysql
+- name: install apache2
   yum: name={{ item }} update_cache=yes state=present
   with_items:
-   - apache2
+   - epel-release
+   - httpd
   register: result
   until: result|succeeded
   retries: 5
 
 - name: install apache module packages
   yum: name={{ item }} update_cache=yes state=present
-  with_items: "{{ apache.modules }}"
+  with_items: "{{ apache.modules.redhat }}"
   register: result
   until: result|succeeded
   retries: 5
+
+- name: enable apache modules
+  lineinfile: dest=/etc/httpd/conf/httpd.conf insertafter="^# LoadModule " line="LoadModule {{ item }}_module modules/mod_{{ item }}.so"
+  with_items:
+    - headers
+    - ssl
+    - rewrite
+  notify: reload httpd
 

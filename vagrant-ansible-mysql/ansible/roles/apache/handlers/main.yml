@@ -7,3 +7,12 @@
 
 - name: stop apache
   service: name=apache2 state=stopped
+
+- name: restart httpd
+  service: name=httpd state=restarted
+
+- name: reload httpd
+  service: name=httpd state=reloaded
+
+- name: stop httpd
+  service: name=httpd state=stopped

@@ -1,3 +1,8 @@
 ---
-- name: reload-sshd
+# for Debian/Ubuntu
+- name: reload-ssh
   service: name=ssh state=reloaded
+
+# for CentOS/RedHat
+- name: reload-sshd
+  service: name=sshd state=reloaded
