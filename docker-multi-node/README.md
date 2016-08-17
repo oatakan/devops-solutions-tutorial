@@ -4,6 +4,11 @@ Create 3 containers using Dockerfile that will deploy nginx, mysql and php appli
 
 For this example we will create new nginx and mysql images rather than pulling from existing images.
 
+Requirements:
+
+- docker > 1.12
+- add '127.0.0.1 site.local.ad.home' to /etc/hosts on your system
+
 Usage:
 
 Option 1:
@@ -31,3 +36,6 @@ docker-compose build
 
 To run
 docker-compose up -d
+
+To test the app navigate to:
+http://site.local.ad.home/index.php
