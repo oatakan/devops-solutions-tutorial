@@ -1,14 +1,14 @@
-Add/Remove SSH access for a user
+**Add/Remove SSH access for a user**
 
 This script assumes that you grant access to a new developer for existing instances where you receive the public key from the user.
 
-Assumptions:
+**Assumptions:**
 
 - user exists with public key
 - user public key is passed as string
 
 
-Usage:
+**Usage:**
 
 sudo ./user_add.sh <username> <public_key>
 

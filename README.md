@@ -1,7 +1,7 @@
 # devops-solutions-tutorial
 This repository contains a variety of DevOps related sample code.
 
-Contents
+**Contents**
 
 1 - ssh-user-access
 
