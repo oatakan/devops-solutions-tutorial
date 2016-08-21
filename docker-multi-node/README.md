@@ -35,10 +35,12 @@ To run:
 
 _with docker-compose_
 
-To build
+To build:
+
 `docker-compose build`
 
-To run
+To run:
+
 `docker-compose up -d`
 
 To test the app navigate to:
