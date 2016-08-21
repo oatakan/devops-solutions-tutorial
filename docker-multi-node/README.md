@@ -13,7 +13,7 @@ For this example we will create new nginx and mysql images rather than pulling f
 
 **Option 1:**
 
-~~with docker~~
+_with docker_
 
 To build:
 
