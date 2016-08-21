@@ -10,8 +10,8 @@ This script assumes that you grant access to a new developer for existing instan
 
 **Usage:**
 
-sudo ./user_add.sh <username> <public_key>
+`sudo ./user_add.sh <username> <public_key>`
 
-sudo ./user_disable.sh <username>
+`sudo ./user_disable.sh <username>`
 
 You would run this script on the target instance. You can automate this by running this script on each instance from a cm tool like ansible.
